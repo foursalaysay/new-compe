@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+
 
 import CompanySidebar from './components/company-sidebar';
 import AdminProfile from '../admin-dashboard/components/profile';
@@ -12,9 +12,6 @@ import { donationDataArray } from './components/donation-data';
 
 
 export default function CompanyDashboard(){
-
-    
-    
     return(
         <div className="flex flex-row">
 

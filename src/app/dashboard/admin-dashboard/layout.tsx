@@ -3,12 +3,12 @@ import React from 'react'
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Toaster } from "sonner";
+// import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import Providers from "@/components/providers/Providers";
 
 
-import "./globals.css";
+// import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,17 +30,16 @@ export default function AdminLayout({
           defer
           src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}&libraries=places`}
         ></script>
-        <Providers>
+        
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
-            <Toaster />
+            
             {children}
           </ThemeProvider>
-        </Providers>
       </body>
     </html>
   );

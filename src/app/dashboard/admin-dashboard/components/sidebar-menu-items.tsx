@@ -16,7 +16,6 @@ import {
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
 
 interface IDashProps {
   Icon: LucideIcon;
@@ -50,8 +49,8 @@ const SidebarMenuItems: React.FC = () => {
     {
     groupName: "Verification",
     items: [
-      { name: "Company Verification", url: "admin-dashboard", icon: Home },
-      { name: "Organization Verification", url: "admin-dashboard", icon: Home },
+      { name: "Company Verification", url: "com-list", icon: Home },
+      { name: "Organization Verification", url: "org-list", icon: Home },
     ],
   },
     {

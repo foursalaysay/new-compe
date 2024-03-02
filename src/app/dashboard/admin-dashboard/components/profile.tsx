@@ -8,7 +8,7 @@ export default function AdminProfile() {
 
   
   return (
-    <div className='flex flex-col justify-center items-center gap-5 w-[203px] h-[162px]'>
+    <div className='flex flex-col justify-center items-center gap-5 w-[250px] h-[162px]'>
         <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
