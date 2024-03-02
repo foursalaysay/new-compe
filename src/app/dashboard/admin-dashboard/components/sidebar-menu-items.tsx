@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 
 import Link from "next/link";
 import React from "react";
@@ -37,27 +36,25 @@ const DashIcon: React.FC<IDashProps> = ({
 const SidebarMenuItems: React.FC = () => {
   const pathname = usePathname();
 
-  
-
   const sidebarMenu = [
     {
       groupName: "Dashboard",
       items: [
-        { name: "Overview", url: "admin-dashboard", icon: Home },
+        { name: "Company Verification", url: "com-list", icon: Home },
+      { name: "Organization Verification", url: "org-list", icon: Home }
       ],
     },
-    {
-    groupName: "Verification",
-    items: [
-      { name: "Company Verification", url: "com-list", icon: Home },
-      { name: "Organization Verification", url: "org-list", icon: Home },
-    ],
-  },
+  //   {
+  //   groupName: "Verification",
+  //   items: [
+      
+  //   ],
+  // },
     {
       groupName: "Users",
       items: [
-        { name: "Company List", url: "com-list", icon: Building2  },
-        { name: "Organization List", url: "org-list", icon: Warehouse  },
+        { name: "Company List", url: "usercomlist", icon: Building2  },
+        { name: "Organization List", url: "userorglist", icon: Warehouse  },
       ],
     },
     {

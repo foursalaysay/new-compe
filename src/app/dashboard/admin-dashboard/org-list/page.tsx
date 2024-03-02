@@ -4,6 +4,7 @@ import SidebarMenuItems from "../components/sidebar-menu-items";
 // import DonationForm from "./dashboard/company-dashboard/components/donation-form";
 import AdminProfile from "../components/profile";
 import CompanyList from "../components/c-list";
+import OrgList from "../components/o-list";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -26,7 +27,7 @@ export default function OrgListVerification() {
     </div>
       <Separator orientation="vertical"/>
       <>
-        <CompanyList cDataUser={cUsers} />
+        <OrgList cDataUser={cUsers} />
       </>
     </div>
   );

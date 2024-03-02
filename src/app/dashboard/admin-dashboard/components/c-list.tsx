@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card"
 
 import { CompanyData } from './sample-data'
+import { DialogDemo } from './verification-dialog'
 import Image from 'next/image'
 
 interface cProps {
@@ -43,6 +44,7 @@ export default function CompanyList({ cDataUser } : cProps) {
            <p>{obj.address}</p>
            <p>{obj.contact_number}</p>
            <p>{obj.representative}</p>
+            <DialogDemo />
            </div>
        </Card>
         </>

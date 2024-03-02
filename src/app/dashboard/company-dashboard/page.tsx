@@ -5,8 +5,6 @@ import AdminProfile from '../admin-dashboard/components/profile';
 
 import { Separator } from '@/components/ui/separator';
 
-
-
 import DonatedSection from './components/donated-goods';
 import { donationDataArray } from './components/donation-data';
 
