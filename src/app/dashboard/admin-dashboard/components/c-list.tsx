@@ -44,7 +44,9 @@ export default function CompanyList({ cDataUser } : cProps) {
            <p>{obj.address}</p>
            <p>{obj.contact_number}</p>
            <p>{obj.representative}</p>
+          <div className='ml-32 mt-8'>
             <DialogDemo />
+          </div>
            </div>
        </Card>
         </>

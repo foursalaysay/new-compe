@@ -20,7 +20,7 @@ const pathname = usePathname();
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button variant="default">
             Verify {pathname.includes("com-list") ? "Company" : "Organization"}
         </Button>
       </DialogTrigger>

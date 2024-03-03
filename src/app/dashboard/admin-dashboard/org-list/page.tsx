@@ -3,7 +3,6 @@
 import SidebarMenuItems from "../components/sidebar-menu-items";
 // import DonationForm from "./dashboard/company-dashboard/components/donation-form";
 import AdminProfile from "../components/profile";
-import CompanyList from "../components/c-list";
 import OrgList from "../components/o-list";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -14,21 +13,22 @@ import { cUsers } from "../components/sample-data";
 
 export default function OrgListVerification() {
   return (
-    <div className="flex flex-row">
-
-
-
-  <div className="flex flex-col w-[250px]">
-    <ScrollArea>
-        <AdminProfile />
-        <SidebarMenuItems />
-    </ScrollArea>
+    <div className="flex flex-row h-screen w-screen">
+    <div className="flex flex-col w-[250px]">
+      <ScrollArea>
+          <AdminProfile />
+          <SidebarMenuItems />
+      </ScrollArea>
+      </div>
+      
+      <div className="w-full flex flex-row w-calc([100vw - 250px])">
         
-    </div>
-      <Separator orientation="vertical"/>
-      <>
-        <OrgList cDataUser={cUsers} />
-      </>
+          <Separator orientation="vertical"/>
+        <ScrollArea>
+          <OrgList cDataUser={cUsers} />
+        </ScrollArea>
+        
+      </div>
     </div>
   );
 }
