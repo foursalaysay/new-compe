@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -11,13 +13,31 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
+
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+
 import { usePathname } from "next/navigation"
 
 import { z } from 'zod';
 
 export function DialogDemo() {
 
+const { toast } = useToast();
 const pathname = usePathname();
+
+const currentDate: Date = new Date();
+
+
+const onclickButton = () => {
+  toast({
+    title: "Verification Complete",
+    description: "Completed on" + currentDate.toString(),
+    action: (
+      <ToastAction altText="Goto schedule to undo">Exit</ToastAction>
+    ),
+  })
+}
 
   return (
     <Dialog>
@@ -30,7 +50,7 @@ const pathname = usePathname();
         <DialogHeader>
           <DialogTitle>Input necessary documents</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when youre done.
+            Provide these information for documentation purposes.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
