@@ -26,27 +26,27 @@ const pathname = usePathname();
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Input necessary documents</DialogTitle>
           <DialogDescription>
             Make changes to your profile here. Click save when youre done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+          
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="picture">Upload Validity</Label>
+            <Input id="picture" type="file" />
           </div>
+          
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
-              Username
+              Checker Name
             </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+            <Input id="name" value="" className="col-span-3" />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit">Submit Information</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
