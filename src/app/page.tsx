@@ -11,15 +11,15 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className='w-screen h-auto overflow-x-hidden'>
-      <div className='w-full h-screen flex flex-row justify-center gap-20 items-center'>
-    <div className='w-1/2'>
-      <Image
-      src={Logo}
-      alt='image-landing'
-      width={500}
-      height={500}                
-      />
-    </div>
+      <div className='w-full h-screen flex flex-row justify-center items-center'>
+        <div className='w-1/2'>
+          <Image
+          src={Logo}
+          alt='image-landing'
+          width={500}
+          height={500}                
+          />
+        </div>
     
     <div className='flex flex-col text-left gap-5 w-1/2'>
       <h1 className='text-8xl font-bold'>

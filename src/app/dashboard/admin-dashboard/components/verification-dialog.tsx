@@ -13,11 +13,11 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 
 import { usePathname } from "next/navigation"
+import { useRouter } from "next/router"
 
 import { z } from 'zod';
 
@@ -25,8 +25,9 @@ export function DialogDemo() {
 
 const { toast } = useToast();
 const pathname = usePathname();
+const router = useRouter();
 
-const currentDate: Date = new Date();
+const currentDate : Date = new Date();
 
 
 const onclickButton = () => {
@@ -37,6 +38,13 @@ const onclickButton = () => {
       <ToastAction altText="Goto schedule to undo">Exit</ToastAction>
     ),
   })
+
+  if(pathname.includes("com-list")){
+    router.push('/dashboard/admin-dashboard/com-list')
+  }else {
+    router.push('/dashboard/admin-dashboard/org-list') 
+  }
+  
 }
 
   return (
@@ -49,7 +57,7 @@ const onclickButton = () => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Input necessary documents</DialogTitle>
-          <DialogDescription>
+          <DialogDescription> 
             Provide these information for documentation purposes.
           </DialogDescription>
         </DialogHeader>
@@ -68,7 +76,7 @@ const onclickButton = () => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Submit Information</Button>
+          <Button type="submit" onClick={onclickButton}>Submit Information</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
