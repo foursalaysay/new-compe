@@ -44,7 +44,6 @@ const onclickButton = () => {
   }else {
     router.push('/dashboard/admin-dashboard/org-list') 
   }
-  
 }
 
   return (
