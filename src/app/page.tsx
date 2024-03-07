@@ -1,16 +1,13 @@
 'use client'
-
 import Image from 'next/image'
-
 // IMAGE IMPORT
 import Logo from './../../public/logo.png'
-
 import Link from 'next/link'
 
 
 export default function Home() {
   return (
-    <div className='w-screen h-auto overflow-x-hidden'>
+    <div className='w-screen h-auto overflow-x-hidden p-10'>
       <div className='w-full h-screen flex flex-row justify-center items-center'>
         <div className='w-1/2'>
           <Image
@@ -32,17 +29,6 @@ export default function Home() {
       <Link href="/dashboard/admin-dashboard/com-list">List of Companies</Link>
     </div>
     
-    </div>
-
-    {/* ABOUT SHARESURPLUS */}
-
-    <div className='h-full w-full flex flex-row'>
-      <section className='flex flex-col gap-10'>
-        <h1 className='text-4xl'>About</h1>
-        <div className='bg-gray-400 rounded h-2/3 w-[500px]'>
-        </div>
-      </section>
-      
     </div>
     </div>
     
