@@ -19,7 +19,6 @@ export default function ComListVerification() {
         <AdminProfile />
         <SidebarMenuItems />
     </ScrollArea>
-        
     </div>
      
       <div className="w-full">

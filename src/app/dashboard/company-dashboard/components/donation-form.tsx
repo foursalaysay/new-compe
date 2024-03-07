@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { date, z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,21 +17,55 @@ import {
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
+
+export const Transaction = z
+    .object({
+        donationId : z.string(),
+        product : z.array(
+            z.object({
+                pName : z.string(),
+                pQuantity : z.number(),
+                pExpiration : z.date()
+            })
+        ),
+        cName : z.string(),
+        cContact : z.string(),
+        cAddress : z.string(),
+        cRep : z.string(),
+
+        oName : z.string(),
+        oContact : z.string(),
+        oAddress : z.string(),
+        oRep : z.string()
+
+    })
+
+  
+    
+// put session in and add in forms
 
 export function InputForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof Transaction>>({
+    resolver: zodResolver(Transaction),
     defaultValues: {
-      username: "",
+      donationId : "",
+      product : [{
+        pName : "",
+        pQuantity : 0,
+        pExpiration : date(),
+      }],
+      cName : "",
+      cContact : "",
+      cAddress : "",
+      cRep : "",
+      oName : "",
+      oContact : "",
+      oAddress : "",
+      oRep : ""
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: z.infer<typeof Transaction>) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -47,9 +81,9 @@ export function InputForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <FormField
           control={form.control}
-          name="username"
+          name="donationId"
           render={({ field }) => (
-            <FormItem>
+            <FormItem> 
               
               <FormControl>
                 <Input placeholder="shadcn" {...field} />
