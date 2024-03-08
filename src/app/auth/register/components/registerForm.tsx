@@ -53,7 +53,7 @@ export const userSchema = z.object({
   userAddress: z.string(),
   userContact: z.string(),
   userRep: z.string(),
-  userRole: z.enum(["admin", "company", "organization"]),
+  userRole: z.enum(["company", "organization"]),
   userEmail: z.string().email(),
   password: z.string().min(6),
   confirmPassword: z.string().min(6),
@@ -83,7 +83,9 @@ const form: UseFormReturn<userDType> = useForm<userDType>({
   },
 });
 
-  
+  const reCom = () => {
+      router.push("/dashboard/company-dashboard")
+  }
 
   const onSubmit = async (data: userDType) => {
     console.log({ data });
@@ -105,69 +107,71 @@ const form: UseFormReturn<userDType> = useForm<userDType>({
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <fieldset disabled={form.formState.isSubmitting} className="space-y-3">
-          <FormField
-            control={form.control}
-            name="userTypeName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Full Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Your Name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="userContact"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="@email.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="userAddress"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Address</FormLabel>
-                <FormControl>
-                  <MeInputAddress
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="userRep"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Contact Number</FormLabel>
-                <FormControl>
-                  <Input placeholder="09*********" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+        <FormField
+  control={form.control}
+  name="userTypeName"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Name</FormLabel>
+      <FormControl>
+        <Input placeholder="Your Name" {...field} />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
+  control={form.control}
+  name="userContact"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Contact Number:</FormLabel>
+      <FormControl>
+        <Input  placeholder="09*********" {...field} />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
+  control={form.control}
+  name="userAddress"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Address</FormLabel>
+      <FormControl>
+        <MeInputAddress value={field.value} onChange={field.onChange} />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
+  control={form.control}
+  name="userRep"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Representative Name</FormLabel>
+      <FormControl>
+        <Input {...field} />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
             control={form.control}
             name="userRole"
-            render={({ field }) => (
+            render={({ field }: { field: userDType }) => (
               <FormItem>
                 <FormLabel>User Type</FormLabel>
                 <Select
-                  onValueChange={(value) => {
+                  {...field}
+                  onValueChange={(value: any) => {
                     field.onChange(value);
                   }}
                   defaultValue={field.value}
@@ -178,61 +182,71 @@ const form: UseFormReturn<userDType> = useForm<userDType>({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="customer">Organization</SelectItem>
-                    <SelectItem value="service_provider">Company</SelectItem>
+                    <SelectItem value="organization">Organization</SelectItem>
+                    <SelectItem value="company">Company</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
               </FormItem>
             )}
           />
-           <FormField
-            control={form.control}
-            name="userEmail"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="@email.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input {...field} type="password" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Input {...field} type="password" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
-          <Button type="submit" className="w-full">
+
+<FormField
+  control={form.control}
+  name="userEmail"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Email</FormLabel>
+      <FormControl>
+        <Input placeholder="@email.com" {...field} />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
+  control={form.control}
+  name="password"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Password</FormLabel>
+      <FormControl>
+        <Input {...field} type="password" />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+<FormField
+  control={form.control}
+  name="confirmPassword"
+  render={({ field }: { field: userDType }) => (
+    <FormItem>
+      <FormLabel>Confirm Password</FormLabel>
+      <FormControl>
+        <Input {...field} type="password" />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+
+          <Button onClick={reCom}>Register</Button>
+
+          {/* <Button type="submit" className="w-full">
             {form.formState.isSubmitting ? (
               <Loader2 className="animate-spin" />
+              
+              
             ) : (
               "Register"
-            )}
-          </Button>
+            )
+            }
+          </Button> */}
         </fieldset>
       </form>
     </Form>

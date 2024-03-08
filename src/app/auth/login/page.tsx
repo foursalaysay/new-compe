@@ -63,11 +63,11 @@ export default function AuthenticationPage() {
             <blockquote className="space-y-2">
               
               <p className="text-lg">
-                &ldquo;this app help companies to share and distribute their 
+                &ldquo;This app help companies to share and distribute their 
                 donations to deserving organizations who most need their help.
                 &rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              {/* <footer className="text-sm">Sofia Davis</footer> */}
             </blockquote>
           </div>
         </div>

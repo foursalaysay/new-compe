@@ -18,6 +18,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
+import  { useState } from 'react';
+
 const formSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1),
@@ -27,10 +29,19 @@ type FormData = z.infer<typeof formSchema>;
 
 const LoginForm = () => {
   const router = useRouter();
-  const session = useSession();
+  // const session = useSession();
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
+
+  // PRELIMINARY ROUTING
+
+
+  const routingButton = () => {
+    
+      router.push("/dashboard/admin-dashboard");
+      
+  }
 
   const onSubmit = async (data: FormData) => {
     const response = await signIn("credentials", {
@@ -44,12 +55,12 @@ const LoginForm = () => {
       return;
     }
 
-    router.push("/dashboard/overview");
+    router.push("/dashboard/admin-dashboard");
   };
-
+  // onSubmit={form.handleSubmit(onSubmit)}
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form >
         <fieldset disabled={form.formState.isSubmitting} className="space-y-3">
           <FormField
             control={form.control}
@@ -77,12 +88,8 @@ const LoginForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
-            {form.formState.isSubmitting ? (
-              <Loader2 className="animate-spin" />
-            ) : (
-              "Log in"
-            )}
+          <Button type="submit" className="w-full" onClick={routingButton}>
+            Log In
           </Button>
         </fieldset>
       </form>
@@ -91,3 +98,10 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
+// {form.formState.isSubmitting ? (
+//   <Loader2 className="animate-spin" />
+// ) : (
+//   "Log in"
+// )}
