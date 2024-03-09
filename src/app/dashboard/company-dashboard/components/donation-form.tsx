@@ -52,7 +52,7 @@ export function InputForm() {
       product : [{
         pName : "",
         pQuantity : 0,
-        pExpiration : date(),
+        pExpiration: new Date(),
       }],
       cName : "",
       cContact : "",

@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -14,10 +13,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
+
 
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/router"
+
+import { Button } from "@/components/ui/button"
+import { useToast } from "@/components/ui/use-toast"
 
 import { z } from 'zod';
 
@@ -69,7 +71,13 @@ const onclickButton = () => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={onclickButton}>Submit Information</Button>
+          <Button type="submit"
+          onClick={() => {
+            toast({
+              description: "Your Information has been recorded.",
+            })
+          }}
+          >Submit Information</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

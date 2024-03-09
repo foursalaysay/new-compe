@@ -14,7 +14,7 @@ import { cUsers } from "../components/sample-data";
 export default function OrgListVerification() {
   return (
     <div className="flex flex-row">
-    <div className="flex flex-col w-[225px]">
+    <div className="flex flex-col w-[250px]">
         <AdminProfile />
         <SidebarMenuItems />
     </div>
