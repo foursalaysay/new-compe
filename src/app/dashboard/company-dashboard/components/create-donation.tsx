@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator"
+import NewDonation from "./new-donation"
 
 
 export default function CreateDonation() {
@@ -12,7 +13,7 @@ export default function CreateDonation() {
         </p>
       </div>
       <Separator />
-      <AccountForm />
+      <NewDonation /> 
     </div>
   )
 }
