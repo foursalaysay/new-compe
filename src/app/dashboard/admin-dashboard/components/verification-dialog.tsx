@@ -25,7 +25,7 @@ export function DialogDemo() {
 
 const { toast } = useToast();
 const pathname = usePathname();
-const router = useRouter();
+// const router = useRouter();
 
 const currentDate : Date = new Date();
 
@@ -37,20 +37,14 @@ const onclickButton = () => {
     action: (
       <ToastAction altText="Goto schedule to undo">Exit</ToastAction>
     ),
-  })
-
-  if(pathname.includes("com-list")){
-    router.push('/dashboard/admin-dashboard/com-list')
-  }else {
-    router.push('/dashboard/admin-dashboard/org-list') 
-  }
+  }) 
 }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="default">
-            Verify {pathname.includes("com-list") ? "Company" : "Organization"}
+            Verify {pathname.includes("org-list") ? "Organization" : "Company"}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

@@ -58,10 +58,11 @@ const LoginForm = () => {
     router.push("/dashboard/admin-dashboard");
   };
   // onSubmit={form.handleSubmit(onSubmit)}
+  // disabled={form.formState.isSubmitting}
   return (
     <Form {...form}>
       <form >
-        <fieldset disabled={form.formState.isSubmitting} className="space-y-3">
+        <fieldset className="space-y-3">
           <FormField
             control={form.control}
             name="email"
