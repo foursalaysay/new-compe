@@ -99,7 +99,7 @@ export default function NewDonation() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="outline">Create Donation</Button>
       </DialogTrigger>
       <DialogContent className="w-full">
       
@@ -112,7 +112,7 @@ export default function NewDonation() {
     <FormItem>
       <FormLabel>Products</FormLabel>
       <FormControl>
-        {field.value.map((product, index) => (
+        {(field.value || []).map((product, index) => (
           <div key={index}>
             <FormField
               control={form.control}
@@ -144,26 +144,25 @@ export default function NewDonation() {
               )}
             />
 
-<FormField
-  control={form.control}
-  name={`product[${index}].pExpiration` as `product.${number}.pExpiration`}
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel>Expiration Date</FormLabel>
-      <FormControl>
-        <Input
-          placeholder="Expiration Date"
-          type="date"
-          value={field.value.toISOString().split('T')[0]} // Convert Date to string
-          onChange={(e) => {
-            // Your onChange logic here
-          }}
-        />
-      </FormControl>
-    </FormItem>
-  )}
-/>
-
+            <FormField
+              control={form.control}
+              name={`product[${index}].pExpiration` as `product.${number}.pExpiration`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Expiration Date</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Expiration Date"
+                      type="date"
+                      value={(field.value && field.value[index]?.pExpiration) ? new Date(field.value[index]?.pExpiration).toISOString().split('T')[0] : ''} // Convert Date to string
+                      onChange={(e) => {
+                        // Your onChange logic here
+                      }}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </div>
         ))}
       </FormControl>

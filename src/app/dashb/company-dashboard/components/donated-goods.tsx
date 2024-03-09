@@ -1,5 +1,7 @@
 import React from 'react';
 import { TCDonation } from './donation-data';
+import CreateDonation from './create-donation';
+import NewDonation from './new-donation';
 
 export interface ITCDonation {
     donationDataArray : TCDonation []
@@ -14,7 +16,11 @@ export interface Product {
 export default function DonatedSection({ donationDataArray } : ITCDonation ) {
   return (
     <div className='flex flex-col w-calc[100vw - 225px)] h-screen'>
+      <div className='flex flex-row p-10 justify-between'>
       <h1 className='text-6xl text-left p-5'>List of Donations</h1>
+      <NewDonation />
+      </div>
+      
       <div className='flex flex-wrap p-5 gap-5'>
         {donationDataArray.map(donation => (
           <div key={donation.donationId} className="bg-gray-200 p-4 mb-4 rounded">
