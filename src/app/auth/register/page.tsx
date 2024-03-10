@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import RegisterForm from "./components/registerForm";
+import { RegisterSection } from "./components/new-register";
 
 export const metadata: Metadata = {
   title: "Sign up",
@@ -27,12 +27,12 @@ export default function AuthenticationPage() {
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10  dark:border-r lg:flex">
           <div className="absolute inset-0 ">
-            <Image src="share.jpg" alt="login image" objectFit="contain" fill />
+            <Image src="/logo.png" alt="login image" objectFit="contain" fill />
           </div>
           <div className="relative z-20 flex items-center text-lg font-medium">
             <h1 className="text-2xl font-black">
               <Link href={"/"}>
-                <span className="text-primary">MiJo </span> Express
+                <span className="text-primary">Share</span> Surplus
               </Link>
             </h1>
           </div>
@@ -57,7 +57,7 @@ export default function AuthenticationPage() {
                 Sign up for an account to access exclusive features and content.
               </p>
             </div>
-            <RegisterForm />
+            <RegisterSection />
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link
