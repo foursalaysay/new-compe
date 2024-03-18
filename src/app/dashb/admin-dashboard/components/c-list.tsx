@@ -1,4 +1,5 @@
-"use client"
+'use client'
+
 
 
 import React from 'react'
@@ -11,6 +12,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 import { CompanyData } from './sample-data'
 import { DialogDemo } from './verification-dialog'
@@ -26,16 +29,19 @@ interface cProps {
 export default function CompanyList({ cDataUser } : cProps) {
   
   return (
-    <div className='flex flex-col w-calc[100vw - 225px)] h-screen'>
+    <div className='flex flex-col w-ful h-full'>
      <h1 className='text-6xl text-left p-5'>Companies</h1>
-    <div className=' flex flex-wrap p-5 gap-5'>
+    
+     <div className=' flex flex-wrap p-5 gap-5 h-screen'>
+      <ScrollArea>
+
       {cDataUser.map(obj => (
-        <>
-         <Card key={obj.id} className='flex flex-row max-w-4xl border-gray border-2 rounded'>
+       
+         <Card key={obj.id} className='flex flex-row w-[500px] border-gray border-2 rounded'>
           <Image
-          className='w-[200px] p-0'
-          width={500}
-          height={500}
+          className=' p-0'
+          width={200}
+          height={50}
           src={obj.image}
           alt={obj.image}
            />
@@ -49,10 +55,11 @@ export default function CompanyList({ cDataUser } : cProps) {
           </div>
            </div>
        </Card>
-        </>
-         
       ))}
+      </ScrollArea>
     </div>
+    
+   
     </div>
   )
 }

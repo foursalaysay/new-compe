@@ -13,16 +13,16 @@ import { cUsers } from "../components/sample-data";
 
 export default function ComListVerification() {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row w-screen h-screen">
       <div className="flex flex-col w-[250px]">
         <ScrollArea>
             <AdminProfile />
             <SidebarMenuItems />
         </ScrollArea>
         </div>
-     
-      <div className="w-full">
         <Separator orientation="vertical"/>
+      <div className="w-calc([w-100vw - 250px]) h-screen">
+        
         <CompanyList cDataUser={cUsers} />
       </div>
     </div>

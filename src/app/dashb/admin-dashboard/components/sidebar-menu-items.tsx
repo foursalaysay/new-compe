@@ -76,7 +76,7 @@ const SidebarMenuItems: React.FC = () => {
               <div className="flex flex-col gap-4">
                 {group.items.map((item, index2) => (
                   <Link
-                    href={`/dashboard/admin-dashboard/${item.url as string}`}
+                    href={`/dashb/admin-dashboard/${item.url as string}`}
                     key={index2 + 1}
                     className={cn(
                       buttonVariants({
@@ -84,7 +84,7 @@ const SidebarMenuItems: React.FC = () => {
                           ? "default"
                           : "ghost",
                       }),
-                      "flex flex-row justify-between rounded-md    p-2 px-4 transition-colors  "
+                      "flex flex-row justify-between rounded-md p-2 px-4 transition-colors  "
                     )}
                   >
                     <div className="flex items-center gap-2 ">

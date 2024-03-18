@@ -3,6 +3,9 @@ import { TCDonation } from './donation-data';
 import CreateDonation from './create-donation';
 import NewDonation from './new-donation';
 
+// TCDonation is the array of objects
+
+
 export interface ITCDonation {
     donationDataArray : TCDonation []
 }
