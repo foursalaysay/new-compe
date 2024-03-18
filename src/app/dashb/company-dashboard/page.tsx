@@ -16,10 +16,11 @@ export default function CompanyDashboard(){
               <AdminProfile />
               <CompanySidebar />
           </div>
-          <Separator orientation="vertical"/>
-          <>
+         
+          <div className=' flex flex-row w-calc([100vw - 250px]) h-screen'>
+            <Separator orientation="vertical"/>
             <DonatedSection donationDataArray={donationDataArray} />
-          </>
+          </div>
     </div>
     )
 }

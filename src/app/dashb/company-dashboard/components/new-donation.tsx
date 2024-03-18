@@ -39,6 +39,8 @@ import {
   } from "@/components/ui/dialog"
   import { Label } from "@/components/ui/label"
 
+  import { ScrollArea } from "@/components/ui/scroll-area"
+
 
 
 const accountFormSchema = z
@@ -101,7 +103,12 @@ export default function NewDonation() {
       <DialogTrigger asChild>
         <Button variant="outline">Create Donation</Button>
       </DialogTrigger>
+      
       <DialogContent className="w-full">
+      <ScrollArea>
+<div>
+
+
       
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -144,25 +151,38 @@ export default function NewDonation() {
               )}
             />
 
-            <FormField
-              control={form.control}
-              name={`product[${index}].pExpiration` as `product.${number}.pExpiration`}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Expiration Date</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Expiration Date"
-                      type="date"
-                      value={(field.value && field.value[index]?.pExpiration) ? new Date(field.value[index]?.pExpiration).toISOString().split('T')[0] : ''} // Convert Date to string
-                      onChange={(e) => {
-                        // Your onChange logic here
-                      }}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+<FormField
+  control={form.control}
+  name={`product[${index}].pExpiration` as `product.${number}.pExpiration`}
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Expiration Date</FormLabel>
+      <FormControl>
+        <Input
+          placeholder="Expiration Date"
+          type="date"
+          value={
+            field.value instanceof Array && field.value[index]
+              ? new Date(field.value[index].pExpiration).toISOString().split('T')[0]
+              : ''
+          } // Convert Date to string
+          onChange={(e) => {
+            const selectedDate = e.target.value; // Get the selected date from the input
+
+            // Parse the date string to a Date object if needed
+            const parsedDate = selectedDate ? new Date(selectedDate) : null;
+
+            // Your logic here, you can set the value to your form field state
+            // For example, if using react-hook-form:
+            field.onChange(parsedDate);
+          }}
+        />
+      </FormControl>
+    </FormItem>
+  )}
+/>
+
+
           </div>
         ))}
       </FormControl>
@@ -235,8 +255,10 @@ export default function NewDonation() {
         <Button type="submit">Donate Goods</Button>
       </form>
     </Form>
-      
+    </div>
+    </ScrollArea>
     </DialogContent>
+    
     </Dialog>
   )
 }
