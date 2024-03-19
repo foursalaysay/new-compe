@@ -104,8 +104,7 @@ export default function NewDonation() {
         <Button variant="outline">Create Donation</Button>
       </DialogTrigger>
       
-      <DialogContent className="w-full">
-      <ScrollArea>
+      <DialogContent>
 <div>
 
 
@@ -123,7 +122,7 @@ export default function NewDonation() {
           <div key={index}>
             <FormField
               control={form.control}
-              name={`product[${index}].pName` as `product.${number}.pName`}
+              name={`product[${index}].pName`}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Product Name</FormLabel>
@@ -136,7 +135,7 @@ export default function NewDonation() {
 
             <FormField
               control={form.control}
-              name={`product[${index}].pQuantity` as `product.${number}.pQuantity`}
+              name={`product[${index}].pQuantity`}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Quantity</FormLabel>
@@ -151,38 +150,27 @@ export default function NewDonation() {
               )}
             />
 
-<FormField
-  control={form.control}
-  name={`product[${index}].pExpiration` as `product.${number}.pExpiration`}
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel>Expiration Date</FormLabel>
-      <FormControl>
-        <Input
-          placeholder="Expiration Date"
-          type="date"
-          value={
-            field.value instanceof Array && field.value[index]
-              ? new Date(field.value[index].pExpiration).toISOString().split('T')[0]
-              : ''
-          } // Convert Date to string
-          onChange={(e) => {
-            const selectedDate = e.target.value; // Get the selected date from the input
-
-            // Parse the date string to a Date object if needed
-            const parsedDate = selectedDate ? new Date(selectedDate) : null;
-
-            // Your logic here, you can set the value to your form field state
-            // For example, if using react-hook-form:
-            field.onChange(parsedDate);
-          }}
-        />
-      </FormControl>
-    </FormItem>
-  )}
-/>
-
-
+            <FormField
+              control={form.control}
+              name={`product[${index}].pExpiration`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Expiration Date</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Expiration Date"
+                      type="date"
+                      value={field.value && field.value[index] ? field.value[index].pExpiration : ''}
+                      onChange={(e) => {
+                        const selectedDate = e.target.value;
+                        const parsedDate = selectedDate ? new Date(selectedDate) : null;
+                        field.onChange(parsedDate);
+                      }}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </div>
         ))}
       </FormControl>
@@ -190,6 +178,7 @@ export default function NewDonation() {
     </FormItem>
   )}
 />
+
 
 
         <FormField
@@ -256,7 +245,7 @@ export default function NewDonation() {
       </form>
     </Form>
     </div>
-    </ScrollArea>
+   
     </DialogContent>
     
     </Dialog>

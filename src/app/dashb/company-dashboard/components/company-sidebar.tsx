@@ -65,7 +65,7 @@ const CompanySidebar: React.FC = () => {
               <div className="flex flex-col gap-4">
                 {group.items.map((item, index2) => (
                   <Link
-                    href={`/dashboard/admin-dashboard/${item.url as string}`}
+                    href={`/dashboard/company-dashboard/${item.url as string}`}
                     key={index2 + 1}
                     className={cn(
                       buttonVariants({
