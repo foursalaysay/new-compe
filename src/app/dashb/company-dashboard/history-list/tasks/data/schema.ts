@@ -11,3 +11,25 @@ export const taskSchema = z.object({
 })
 
 export type Task = z.infer<typeof taskSchema>
+
+
+
+
+export const CHistorySchema = z
+.object({
+    donationId : z.string(),
+    product : z.array(
+        z.object({
+            pName : z.string(),
+            pQuantity : z.number(),
+            pExpiration : z.date()
+        })
+    ),
+    oName : z.string(),
+    oContact : z.string(),
+    oAddress : z.string(),
+    oRep : z.string(),
+    donationStatus : z.string()
+    })
+
+export type CHistory = z.infer<typeof CHistorySchema>

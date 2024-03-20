@@ -11,7 +11,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 
 
-export default function HistoryList(){
+export default function MoreInfo(){
     return(
         <div className="flex flex-row">
           <div className="flex flex-col w-[250px]">
@@ -24,7 +24,6 @@ export default function HistoryList(){
             <ScrollArea>
 
             </ScrollArea>
-            {/* <DonatedSection donationDataArray={donationDataArray} /> */}
           </div>
     </div>
     )
