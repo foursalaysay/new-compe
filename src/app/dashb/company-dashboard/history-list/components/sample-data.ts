@@ -23,7 +23,7 @@ export interface CIHistory {
     IDataHistory : CHistory []
 }
 
-export const data : CHistory [] = [
+export const CHistoryData : CHistory [] = [
     {
         donationId: "1",
         product: [

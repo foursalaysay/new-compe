@@ -4,10 +4,14 @@ import {useRouter} from 'next/router'
 
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function OHistoryList() {
 
     const router = useRouter();
+
+    const donationId = 100;
+    
 
   return (
     <div className='flex flex-wrap w-full gap-5 p-5'>
@@ -17,7 +21,8 @@ export default function OHistoryList() {
         <p>Sample Address</p>
         </>
         <>
-        <Button variant='default'>More Details</Button></>
+        
+        <Button variant='default'><Link href={`/dashb/company-dashboard/${donationId}`}></Link></Button></>
         </Card>
     </div>
   )
