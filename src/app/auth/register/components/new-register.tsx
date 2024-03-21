@@ -66,12 +66,42 @@ export function RegisterSection() {
     defaultValues
   })
 
-  const reRoute = () => {
-    router.push("/dashb/company-dashboard")
-  }
+  // const reRoute = () => {
+  //   router.push("/dashb/company-dashboard")
+  // }
   
 
-  function onSubmit(data: ProfileFormValues) {
+  async function onSubmit(data: ProfileFormValues) {
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // If form data is successfully saved, navigate to desired page using app router
+
+        const { userRole } = data;
+        if ( userRole.toLowerCase() === 'organization'){
+          router.push('/dashb/organization-dashboard')
+        }else if (userRole.toLowerCase() === 'company'){
+          router.push('/dashb/company-dashboard')
+        }else{
+          router.push('/dashb/admin-dashboard')
+        }
+        router.push('/success');
+      } else {
+        // Handle error response
+        console.error('Failed to save form data');
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+    }
+
     toast({
       title: "You submitted the following values:",
       description: (
@@ -198,7 +228,7 @@ export function RegisterSection() {
           </FormItem>
         )}
       />
-        <Button className="w-full" onClick={reRoute} type="submit">Register</Button>
+        <Button className="w-full" type="submit">Register</Button>
       </form>
     </Form>
   )
