@@ -93,7 +93,6 @@ export function RegisterSection() {
         }else{
           router.push('/dashb/admin-dashboard')
         }
-        router.push('/success');
       } else {
         // Handle error response
         console.error('Failed to save form data');

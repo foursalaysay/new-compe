@@ -29,9 +29,9 @@ export default function Home() {
         <p className='text-lg'>Companies donated products distributed at ease</p>
       </div>
       <div className='flex flex-row justify-center items-center gap-2 w-full'>
-        <Button className='text-sm bg-sky-600 w-full'><Link href="/auth/login">Login</Link></Button>
+        <Button className='text-sm bg-sky-600 w-full'><Link href="/login">Login</Link></Button>
         <p className='text-md text-center '>|</p>
-        <Button className='text-sm  bg-sky-600 w-full' ><Link href="/auth/register">Register</Link></Button>
+        <Button className='text-sm  bg-sky-600 w-full' ><Link href="/register">Register</Link></Button>
       </div>
       
 
