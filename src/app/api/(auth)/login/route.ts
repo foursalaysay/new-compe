@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient } from 'mongodb';
-import { ConnectToMongoDB } from '@/server/mongo';
-
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
+
+
   try {
     const data = JSON.parse(req.body);
 
@@ -14,7 +14,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     await client.connect();
 
     // Access your MongoDB collection and insert the data
-    const db = await ConnectToMongoDB();
+    const db = client.db();
     const collection = db.collection('user');
     const result = await collection.insertOne(data);
 

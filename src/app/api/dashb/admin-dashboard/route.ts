@@ -1,8 +1,10 @@
+
+
+
 export async function GET() {
-    const res = await fetch('https://data.mongodb-api.com/...', {
+    const res = await fetch(process.env.MONGO_URI, {
       headers: {
         'Content-Type': 'application/json',
-        'API-Key': process.env.DATA_API_KEY,
       },
     })
     const data = await res.json()
